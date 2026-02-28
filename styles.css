@@ -51,8 +51,10 @@ body, html {
   height: 100%;
 }
 
+/*________________________________________________________________ MAINPAGE */
 
 .mainpage_photos {
+  margin-top: 1%;
     position: relative;
 
   /* The image used */
@@ -77,20 +79,80 @@ body, html {
   font-family: "Funnel Display", sans-serif;
   margin: 20px auto; /* góra/dół | lewo/prawo */
   color: white;
-  font-size: 40px;
+  font-size: 50px;
+  font-weight: 1000;
 }
 
+
 .petition_button {
-  font-size: 18px;
+  font-size: 23px;
   padding: 10px 20px;
-  background-color: #3b3b6d;
-  color: white;
+  background-color: #ffffff;
+  color: #0b1c2d;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.petition_button:hover {
+  background-color: #5a0f1b;
+  color: white;
+  box-shadow: 0 0 50px #5a0f1b;
+  font-size: 25px;
 }
 
 
+/*________________________________________________________________ MAINPAGE - SLIDER */
+
+.mainpage_slider {
+  position: absolute;
+  display: flex;
+  right: 0%;
+  top: 0%;
+  gap: 40px;
+  height: 100%;
+  flex-direction: column;
+  width: 500px;
+  background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+.slider_item {
+  top: 25%;
+  position: relative;
+  width: 320px;
+  aspect-ratio: 6 / 3;
+  overflow: hidden;
+  border-radius: 5px;
+  height: auto;
+  margin: 0px 45px;
+  gap: 20px;
+  
+}
+
+.slider_item h1 {
+  font-family: "Funnel Display", sans-serif;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  color: white;
+  text-align: left;
+  box-sizing: border-box;
+  
+}
+
+.slider_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/*________________________________________________________________ MAINPAGE - ARTYKUŁY */
 .mainpage_block {
 position: absolute;
 box-shadow: 0 28px 78px 0 rgba(0, 0, 0, 0.1), 0 28px 78px 0 rgba(0, 0, 0, 0.1);
@@ -237,22 +299,24 @@ fill: #0d3761;
 }
 /*________________________________________________________________ NAGŁÓWEK */
 
-.header_title {
-font-size: 18px;
+.header_title { 
 display: flex;
 align-items: center;
 color: #0b1c2d;
 }
 
-.header_title h1 {
-margin: 0;
-margin-left: 15px;
+.header_text h1 {
+    font-family: "SAIRA STENCIL ONE", sans-serif;
+    font-size: 32px;
+    margin: 0;
+    font-weight: 600;
 }
 
-.header_text {
-font-size: 18px;
-color: #0b1c2d;     
-flex-direction: column;
+.header_text p {
+    font-family: "Funnel Display", cursive;
+    font-size: 18px;
+    margin: 0;
+    font-style: italic;
 }
 
 /* Prawa strona nagłówka */
@@ -263,37 +327,40 @@ align-items: center;
 
 /* Style dla przycisków w nagłówku */
 .header_button_1 {
-    font-size: 25px;
-  margin-left: 10px;
-  padding: 5px 15px;
+  font-size: 23px;
+  padding: 10px 20px;
   background-color: #5a0f1b;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition-duration: 0.3s;
 }
 
 .header_button_1:hover {
-    background-color: #0b1c2d;
-    color: white;
-    border: 2px solid #5a0f1b;
+  background-color: #0b1c2d;
+  color: white;
+  box-shadow: 0 0 50px #0b1c2d;
+  font-size: 25px;
 }
 
 .header_button_2 {
-    font-size: 25px;
-  margin-left: 10px;
-  padding: 5px 15px;
-  background-color: #0b1c2d;
-  color: white;
+  margin-left: 15px;
+  font-size: 23px;
+  padding: 10px 20px;
+  background-color: #5a0f1b;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition-duration: 0.3s;
 }
 
 .header_button_2:hover {
-    background-color: #5a0f1b;
-    color: white;
-    border: 2px solid #0b1c2d;
+  background-color: #0b1c2d;
+  color: white;
+  box-shadow: 0 0 50px #0b1c2d;
+  font-size: 25px;
 }
 
 /* Logo */
@@ -305,17 +372,19 @@ margin-right: 20px;
 
 .nav {
     font-family: "Funnel Display", sans-serif;
-display: flex;
-justify-content: center;
-z-index: 1000;
-width: 100%;
-}
-
-ul.nav {
     display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    z-index: 2000;
 }
 
+/* kontener pojedynczego elementu */
+.nav-item {
+    position: relative;
+}
 
+/* styl linków */
 .nav a {
     position: relative;
     color: black;
@@ -323,10 +392,12 @@ ul.nav {
     padding: 10px 45px;
     font-size: 18px;
     font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
+    display: block;
+    transition:  0.3s, color 0.3s;
 }
 
-.nav a:not(:last-child)::after {
+/* separator */
+.nav-item:not(:last-child) > a::after {
   content: "";
   position: absolute;
   right: -1px;
@@ -336,9 +407,41 @@ ul.nav {
   background-color: #131313;
 }
 
+/* hover głównego linku */
 .nav a:hover {
     background-color: #5a0f1b;
     color: white;
+    transform: translateY(-5px);
+}
+
+/* dropdown */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+/* pokazanie menu */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* linki w dropdownie */
+.dropdown-menu a {
+    padding: 10px 20px;
+    font-size: 16px;
 }
 
 
